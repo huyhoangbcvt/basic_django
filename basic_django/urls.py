@@ -35,8 +35,10 @@ from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
 from datetime import datetime, date
+from user_app.modules import views_auth
 
 urlpatterns = [
+    path('', views_auth.index, name='index_admin'),
     # djoser endpoints: Django REST framework
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
