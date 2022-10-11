@@ -1,0 +1,80 @@
+{% extends "layout/layout.html" %}
+
+{% block title %}{{ title }} {% endblock %}
+
+{% block content %}
+	<div class="">
+	 	{% load static %}
+		<div class="form-group clearfix">
+			<label for="id_username" class="col-md-4 control-label">Tên đăng nhập (*)</label>
+			<label for="id_username" class="col-md-7 required-color">{{ user.username }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_first_name" class="col-md-4 control-label">Tên (*)</label>
+			<label for="id_first_name" class="col-md-7 required-color">{{ user.first_name }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_last_name" class="col-md-4 control-label">Họ (*)</label>
+			<label for="id_last_name" class="col-md-7 required-color">{{ user.last_name }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_email" class="col-md-4 control-label">Mail điện tử</label>
+			<label for="id_email" class="col-md-7 required-color">{{ user.email }}</label>
+			<!-- <input type="text" value="{{ user.email }}" name="username" visibility="hidden" /> -->
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_is_staff" class="col-md-4 control-label">Tình trạng hân viên</label>
+			<label for="id_is_staff" class="col-md-7 required-color">{{ user.is_staff }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_is_active" class="col-md-4 control-label">Kích hoạt</label>
+			<label for="id_is_active" class="col-md-7 required-color">{{ user.is_active }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_date_joined" class="col-md-4 control-label">Ngày tham gia</label>
+			<label for="id_date_joined" class="col-md-7 required-color">{{ user.date_joined }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_role" class="col-md-4 control-label">Tài khoản (Local | Social)</label>
+			<label for="id_role" class="col-md-7 required-color">{{ role_label }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_birthday" class="col-md-4 control-label">Ngày sinh (*)</label>
+			<label for="id_birthday" class="col-md-7 required-color">{{ user.profile.birthday }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_phoneNumber" class="col-md-4 control-label">Số điện thoại</label>
+			<label for="id_phoneNumber" class="col-md-7 required-color">{{ user.profile.phone_number }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_address" class="col-md-4 control-label">Địa chỉ</label>
+			<label for="id_address" class="col-md-7 required-color">{{ user.profile.address }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_description" class="col-md-4 control-label">Mô tả</label>
+			<label for="id_description" class="col-md-7 required-color">{{ user.profile.description }}</label>
+		</div>
+		<div class="form-group clearfix">
+			<label for="id_website" class="col-md-4 control-label">Link cá nhân</label>
+			<label for="id_website" class="col-md-7 required-color">{{ user.profile.website }}</label>
+		</div>
+
+		<div class="form-group clearfix">
+			{% if user.profile.images %}
+			<label for="id_address" class="col-md-4 control-label"><img src="{{ user.profile.images.url }}" alt="{{ user.profile.images }}" style="width: 200px;" /></label>
+			<label for="id_images" class="col-md-4 required-color">{{ user.profile.images.url }}</label>
+			<!-- <img src="{{ MEDIA_URL }}{{ profile_record.images }}" alt="{{ profile_record.images }}" /> -->
+			{% else %}
+			<label for="id_address" class="col-md-4 control-label"><img src="{% static 'images/avatar.png' %}" alt="Default" style="width: 200px;" /></label>
+			<label for="id_images" class="col-md-4 required-color">Hình Avatar mặc định</label>
+			{% endif %}
+		</div>
+		<div class="form-group clearfix">
+		<ul>
+			<!-- <li><a href="{% url 'user:profile' %}{{ user.id }}/edit/">Chỉnh sửa thông tin cá nhân</a></li> -->
+			<li style="text-align: center;list-style: none;"><a href="{% url 'user:profile' %}edit/">Chỉnh sửa thông tin cá nhân</a></li>
+			<li style="text-align: center;list-style: none;"><a href="{% url 'user:password_change' %}">Thay đổi mật khẩu</a></li>
+		</ul>
+		</div>
+	</div>
+{% endblock %}

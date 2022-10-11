@@ -1,0 +1,49 @@
+{% extends "layout/layout_auth.html" %}
+
+{% block title %}{{ title }} {% endblock %}
+
+{% block nav_top %}{% include 'layout/nav-bar_top.html' %}{% endblock %}
+
+{% block content %} 
+<!-- Container -->
+<div class="container">
+<div class="justify-content-center align-items-center" style="max-width: 650px;margin: 0 auto;">
+	<div class="border">
+	<!-- <div class="" id="container-login" style="width: 36em;"> -->
+		<!-- Header -->
+		<div id="header">
+			<div id="branding">
+				<h1 id="site-name"><a href="{% url 'user:login' %}">{{ site_header|default:_('Đăng nhập') }}</a></h1>
+			</div>
+		</div>
+		<!-- END Header -->
+		<div id="content-login" class="colM">
+			<h2>{{ title }}</h2>
+			<div id="content-main">
+								
+				<form action="{% url 'user:sign_up' %}" method="post" class="form-horizontal">{% csrf_token %}
+					<!-- <hr /> -->
+					{% for field in form %}
+					<div class="form-group"><!-- {{ field }} -->
+						{{ field.label_tag }}
+							{{ field }}
+							
+						{% for error in field.errors %}
+						<p style="color: red; text-align: right;">{{ error|escape }}</p>
+						{% endfor %}
+					</div>
+					{% endfor %}
+					<div class="form-group submit-row">
+						<input type="hidden" name="next" value="{{ next }}" />
+						<input type="submit" value="Đăng ký" class="btn btn-default"/>
+					</div>
+					<div class="clearfix"></div>
+				</form>	
+			</div>
+			<div id="footer"></div>
+			
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

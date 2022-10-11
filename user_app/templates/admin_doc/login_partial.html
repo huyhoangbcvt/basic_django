@@ -1,0 +1,32 @@
+ 
+ {% load static %}
+<ul class="nav navbar-nav navbar-right">
+	<li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tiếng Việt</a>
+		<div class="dropdown-menu">
+			<a href="#" data-lang="en"><img src="{% static 'images/english.png' %}" alt="" />English</a>
+			<a href="#" data-lang="vi"><img src="{% static 'images/vi.png' %}" alt="" />Tiếng Việt</a>
+		</div>
+	</li>
+</ul>
+
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="/admin">Administration</a></li>
+</ul>
+
+{% if user.is_authenticated %}
+<form id="logoutForm" action="/admin/logout/" method="post" class="navbar-right">
+    {% csrf_token %}
+    <ul class="nav navbar-nav navbar-right">
+        <li><span class="navbar-brand">CHÀO MỪNG BẠN, {{ user.username }}!</span></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+</form>
+
+{% else %}
+
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="{% url 'admin_login' %}">Log in Admin</a></li>
+</ul>
+
+{% endif %}
+

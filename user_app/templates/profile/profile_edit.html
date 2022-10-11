@@ -1,0 +1,48 @@
+{% extends "layout/layout.html" %} 
+
+{% block title %}{{ title }} {% endblock %} 
+
+{% block nav_top %}{% include 'layout/nav-bar_top.html' %}{% endblock %}
+
+{% block nav_sidebar %}{% include 'layout/nav-sidebar.html' %}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+	<nav aria-label="breadcrumb">
+  		<ol class="breadcrumb">
+		{% for crumb, href in crumbs %}
+	      {% if forloop.last %}
+	        <li class="breadcrumb-item{% if forloop.counter == breadcrumbs_total %} active{% endif %}" {% if forloop.counter == breadcrumbs_total %}aria-current="page"{% endif %}>{{ crumb }}</li>
+	      {% else %}
+	        <li class="breadcrumb-item"><a href="{{ href }}">{{ crumb }}</a></li>
+	      {% endif %}
+	    {% endfor %}
+		</ol>
+	</nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="">
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %} 
+		{% for field in user_form %}
+	    <div class="form-group clearfix">
+	    	<label for="id_username" class="col-md-4 control-label">{{ field.label }}</label>
+	    	<div class="col-md-4" style="display: inline-block;">{{ field }}</div>
+	    </div>
+	    {% endfor %}
+	    <div class="clearfix"></div><!-- {{ profile_form.as_p }} -->
+	    {% for field in profile_form %}
+	    <div class="form-group clearfix">
+	    	<label for="id_username" class="col-md-4 control-label">{{ field.label }}</label>
+	    	<div class="col-md-4" style="display: inline-block;">{{ field }}</div>
+	    </div>
+	    {% endfor %}
+	    <div class="form-group clearfix">
+			<input type="hidden" name="next" value="{{ next }}" />
+			<div class="col-md-12" style="text-align: center;"><input type="submit" value="Lưu lại" class="btn-info"/></div>
+		</div>
+	</form>
+</div>
+{% endblock %}

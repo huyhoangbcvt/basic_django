@@ -1,0 +1,27 @@
+
+{% load static %}
+{% if user.is_authenticated %}
+	<!-- nav-sidebar: starts-here -->
+	<div class="sidebar">
+		<ul class="">
+			<li><a href="https://www.xuathoadon.com.vn/"><span
+					class="icon_cog"></span>Account</a></li>
+		</ul>
+		<ul class="">
+			<li><a href="../table/tablepage"><span class="icon_cog"></span>Table</a></li>
+		</ul>
+		<ul class="">
+			<li><a href="https://ts24corp.com.vn/dashboard"><span
+					class="icon_star_alt"></span>Dashboard</a></li>
+		</ul>
+		<ul class="">
+			<li><a href="https://ts24corp.com.vn/about"><span
+					class="icon_cog"></span>About</a></li>
+		</ul>
+		<ul class="">
+			<li><a href="https://ts24corp.com.vn/affiliate"><span
+					class="icon_cog"></span>Affiliate</a></li>
+		</ul>
+	</div>
+	<!-- sidebar-ends-here -->
+{% endif %}

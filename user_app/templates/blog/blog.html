@@ -1,0 +1,38 @@
+
+{% extends "layout/layout.html" %}
+
+{% block title %}{{ title }} {% endblock %}
+
+{% block nav_top %}{% include 'layout/nav-bar_top.html' %}{% endblock %}
+
+{% block nav_sidebar %}{% include 'layout/nav-sidebar.html' %}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+	<nav aria-label="breadcrumb">
+  		<ol class="breadcrumb">
+		{% for crumb, href in crumbs %}
+	      {% if forloop.last %}
+	        <li class="breadcrumb-item{% if forloop.counter == breadcrumbs_total %} active{% endif %}" {% if forloop.counter == breadcrumbs_total %}aria-current="page"{% endif %}>{{ crumb }}</li>
+	      {% else %}
+	        <li class="breadcrumb-item"><a href="{{ href }}">{{ crumb }}</a></li>
+	      {% endif %}
+	    {% endfor %}
+		</ol>
+	</nav>
+</div>
+{% endblock %}
+	
+{% block content %}
+	<h1>Web - blog, List!</h1>
+	{% if book_list %}
+	    <ul>
+	    {% for book in book_list %}
+	        <li><a href="/book/blog/{{ book.id }}/">{{ book.name }}</a></li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No polls are available.</p>
+	{% endif %}
+    
+{% endblock %}

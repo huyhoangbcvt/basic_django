@@ -1,0 +1,30 @@
+{% extends "layout/layout.html" %}
+
+{% block title %}{{ title }} {% endblock %}
+
+{% block nav_top %}{% include 'layout/nav-bar_top.html' %}{% endblock %}
+
+{% block nav_sidebar %}{% include 'layout/nav-sidebar.html' %}{% endblock %}
+
+{% block content %}
+	<div class="home-page">
+	    <div id="sidetreecontrol"><a href="?#">Đóng tất cả</a> | <a href="?#">Mở tất cả</a></div>
+		<ul id="tree">
+			<li class="open"><a href="/user/home/"><strong>Trang chủ</strong></a>
+				<ul>
+					<h1>Home page!</h1>
+					<h2>'Hello, welcome to the index page.'</h2>
+					<li><a href="#">{{ list }}</a></li>
+				</ul>
+			</li>
+		</ul>
+		{% for field in '123456789' %}
+		Collapsible Sidebar Using Bootstrap 4
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			<br/><br/><br/>
+		{% endfor %}
+	</div>
+    <!--Add this-->
+    {% include 'layout/nav-bar.html' %}
+
+{% endblock %}

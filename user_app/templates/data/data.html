@@ -1,0 +1,32 @@
+{% extends "layout/layout.html" %} 
+
+{% block title %}{{ title }} {% endblock %} 
+
+{% block nav_top %}{% include 'layout/nav-bar_top.html' %}{% endblock %}
+
+{% block nav_sidebar %}{% include 'layout/nav-sidebar.html' %}{% endblock %}
+
+{% block content %} 
+	
+	<div class="table-div">
+		<!-- We will display our data in a normal HTML table using Django's
+	      template for-loop to generate our table rows for us-->
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Celebrity Name</th>
+					<th>Net Worth</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for celebrity in data %}
+				<tr>
+					<td>{{ celebrity.name }}</td>
+					<td>$ {{ celebrity.worth }} | 'intcomma'</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{% include 'layout/nav-bar.html' %} 
+{% endblock %}

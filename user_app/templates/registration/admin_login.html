@@ -1,0 +1,18 @@
+
+{% extends "admin/login.html" %}
+
+{% block title %}{{ title }} {% endblock %}
+
+{% block sidebar %}
+	{{ block.super }}
+	<div class="form-group">
+		<div class="col-md-offset-1 col-md-10">
+			<a href="/accounts/sign-up/">Chưa có tài khoản?</a>
+			<a style="float: right;" href="/accounts/password-reset/">Đặt lại mật khẩu</a>
+		</div>
+	</div>
+{% endblock %}
+
+{% block branding %}
+	<a href="{% url 'admin_login' %}">{{ site_header|default:_('Đăng nhập trang quản trị') }}</a>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "layout/layout_auth.html" %}
+
+{% block title %}{{ title }} {% endblock %}
+
+{% block nav_top %}{% include 'layout/nav-bar_top.html' %}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs" style="position: fixed;width: 100%;margin-top: 35px;">
+	<nav aria-label="breadcrumb">
+  		<ol class="breadcrumb">
+		{% for crumb, href in crumbs %}
+	      {% if forloop.last %}
+	        <li class="breadcrumb-item{% if forloop.counter == breadcrumbs_total %} active{% endif %}" {% if forloop.counter == breadcrumbs_total %}aria-current="page"{% endif %}>{{ crumb }}</li>
+	      {% else %}
+	        <li class="breadcrumb-item"><a href="{{ href }}">{{ crumb }}</a></li>
+	      {% endif %}
+	    {% endfor %}
+		</ol>
+	</nav>
+</div>
+{% endblock %}
+
+{% block content %}   
+<!-- Container -->
+<div class="container">
+<div class="row justify-content-center align-items-center" style="height:80vh;">
+	<div class="border">
+	<!-- <div class="" id="container-login" style="width: 36em;"> -->
+		<!-- Header -->
+		<div id="header">
+			<div id="branding">
+				<h1 id="site-name"><a href="{% url 'login' %}">{{ site_header|default:_('Đăng nhập') }}</a></h1>
+			</div>
+		</div>
+		<!-- END Header -->
+		<div id="content-login" class="colM">
+			<h2>{{ title }}</h2>
+			<div id="content-main">
+
+						{% if form.errors %} 
+							{% for field in form %} 
+								{% for error in field.errors %}
+						<div class="alert alert-danger">
+							<strong>{{ error|escape }}</strong>
+						</div>
+								{% endfor %} 
+							{% endfor %}
+						{% endif %}
+					
+				<form action="{% url 'sign_up' %}" method="post" class="form-horizontal">
+					{% csrf_token %}
+					{{ user_form.as_p }} 
+    				{{ profile_form.as_p }}
+					<!-- <hr /> -->
+					<!-- <div class="form-group">
+						<label for="id_username" class="col-md-4 control-label">{{ form.first_name.label_tag }} (*)</label>
+						<div class="col-md-8">{{ form.first_name }}</div>
+					</div>
+					<div class="form-group">
+						<label for="id_username" class="col-md-4 control-label">{{ form.last_name.label_tag }} (*)</label>
+						<div class="col-md-8">{{ form.last_name }}</div>
+					</div>
+					<div class="form-group">
+						<label for="id_email" class="col-md-4 control-label">{{ form.email.label_tag }} (*)</label>
+						<div class="col-md-8">{{ form.email }}</div>
+					</div>
+					<div class="form-group">
+						<label for="id_username" class="col-md-4 control-label">{{ form.username.label_tag }} (*)</label>
+						<div class="col-md-8">{{ form.username }}</div>
+					</div>
+					<div class="form-group">
+						<label for="id_password" class="col-md-4 control-label">{{ form.password1.label_tag }} (*)</label>
+						<div class="col-md-8">{{ form.password1 }}</div>
+					</div>
+					<div class="form-group">
+						<label for="id_password" class="col-md-4 control-label">{{ form.password2.label_tag }} (*)</label>
+						<div class="col-md-8">{{ form.password2 }}</div>
+					</div> -->	
+					<div class="form-group submit-row">
+						<input type="hidden" name="next" value="{{ next }}" />
+						<input type="submit" value="Đăng ký" class="btn btn-default"/>
+					</div>
+					<div class="clearfix"></div>
+				</form>	
+			</div>
+			<div id="footer"></div>
+			
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

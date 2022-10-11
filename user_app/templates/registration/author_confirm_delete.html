@@ -1,0 +1,31 @@
+{% extends "layout/layout.html" %}
+
+{% block title %}{{ title }} {% endblock %}
+
+{% block nav_top %}{% include 'layout/nav-bar_top.html' %}{% endblock %}
+
+{% block nav_sidebar %}{% include 'layout/nav-sidebar.html' %}{% endblock %}
+
+{% block content %} 
+	
+	{% include 'layout/nav-bar_top.html' %}
+	{% if title %}
+	<div class="container">
+		<div class="breadcrumbs">
+			{% if user.is_authenticated %}
+			<a href="/home/">Home</a>
+			{% else %}
+			<a href="/">Home</a>
+			{% endif %}
+			 &rsaquo; {{title}}
+		</div>
+    </div>
+    {% else %} {% endif %}
+    
+	<!-- Container -->
+	
+	<form method="post">{% csrf_token %}
+	    <p>Are you sure you want to delete "{{ object }}"?</p>
+	    <input type="submit" value="Confirm">
+	</form>
+{% endblock %}

@@ -1,0 +1,31 @@
+
+{% extends "layout/layout.html" %}
+
+{% block title %}{{ title }} {% endblock %}
+
+{% block nav_top %}{% include 'layout/nav-bar_top.html' %}{% endblock %}
+
+{% block nav_sidebar %}{% include 'layout/nav-sidebar.html' %}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+	<nav aria-label="breadcrumb">
+  		<ol class="breadcrumb">
+		{% for crumb, href in crumbs %}
+	      {% if forloop.last %}
+	        <li class="breadcrumb-item{% if forloop.counter == breadcrumbs_total %} active{% endif %}" {% if forloop.counter == breadcrumbs_total %}aria-current="page"{% endif %}>{{ crumb }}</li>
+	      {% else %}
+	        <li class="breadcrumb-item"><a href="{{ href }}">{{ crumb }}</a></li>
+	      {% endif %}
+	    {% endfor %}
+		</ol>
+	</nav>
+</div>
+{% endblock %}
+	
+{% block content %}
+	<h1>Test of view via to transmit parameter Id (type integer)</h1>
+	<h3>{{ question }}</h3>
+	<li><a href="{% url 'blog_detail' object_detail.id %}">{{ object_detail.price }}</a></li>
+	<li><a href="/home/">Back home</a></li>
+{% endblock %}

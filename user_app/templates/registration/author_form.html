@@ -1,0 +1,27 @@
+{% extends "layout/layout_auth.html" %}
+
+{% block title %}{{ title }} {% endblock %}
+
+{% block content %} 
+	
+	{% include 'layout/nav-bar_top.html' %}
+	{% if title %}
+	<div class="container">
+		<div class="breadcrumbs">
+			{% if user.is_authenticated %}
+			<a href="/home/">Home</a>
+			{% else %}
+			<a href="/">Home</a>
+			{% endif %}
+			 &rsaquo; {{title}}
+		</div>
+    </div>
+    {% else %} {% endif %}
+    
+	<!-- Container -->
+	
+	<form method="post">{% csrf_token %}
+	    {{ form.as_p }}
+	    <input type="submit" value="Save">
+	</form>
+{% endblock %}

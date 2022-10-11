@@ -1,0 +1,53 @@
+{% extends "layout/layout_auth.html" %}
+
+{% block title %}{{ title }} {% endblock %}
+
+{% block content %} 
+
+	{% include 'layout/nav-bar_top.html' %}
+	<!-- header-section-ends-here -->
+	{% if title %}
+	<div class="container">
+        <!-- <ol class="breadcrumb my-4">
+            <li class="breadcrumb-item">Boards</li>
+            <li class="breadcrumb-item active">{{board.name}}</li>
+        </ol> -->
+		<div class="breadcrumbs">
+			{% if user.is_authenticated %}
+			<a href="/home/">Home</a>
+			{% else %}
+			<a href="/">Home</a>
+			{% endif %}
+			 &rsaquo; {{title}}
+		</div>
+     </div>
+    {% else %} {% endif %}
+	<!-- Container -->
+	<div id="container-login">
+		<!-- Header -->
+		<div id="header">
+			<div id="branding">
+				<h1 id="site-name"><a href="/accounts/login/">Login</a></h1>
+			</div>
+		</div>
+		<div id="content-login" class="colM">
+			<h2>Đăng nhập</h2>
+			
+			<div id="content-main">					
+				<form method="post">
+				    {% csrf_token %}
+				    {{form.as_p}}
+				    <input type="submit" value="Đăng nhập">
+				    <div class="form-group">
+						<div class="col-md-offset-1 col-md-10">
+						<a href="/accounts/sign-up/">Chưa có tài khoản?</a>
+						<a style="float: right;" href="/accounts/password-reset/">Đặt lại mật khẩu</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			
+			<div id="footer"></div>			
+		</div>
+	</div>
+{% endblock %}
