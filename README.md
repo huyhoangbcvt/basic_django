@@ -37,7 +37,7 @@ http://localhost:8083/
 http://localhost:8083/user/
 
 # Run admin site
-http://localhost:8083/user/
+http://localhost:8083/admin/
 
 # if APIs
 http://localhost:8083/user/all-accounts
