@@ -1,0 +1,152 @@
+/*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {font-family: 'Poppins', sans-serif;background: #fafafa;}
+p {font-family: 'Poppins', sans-serif; font-size: 1.1em;font-weight: 300;line-height: 1.7em;color: #999;}
+
+a,
+a:hover,
+a:focus {text-decoration: none;transition: all 0.3s;}
+
+.navbar {padding: 15px 10px;background: #fff;border: none;border-radius: 0;margin-bottom: 40px;box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);}
+.navbar-btn {box-shadow: none;outline: none !important;border: none;}
+.line {width: 100%;height: 1px;border-bottom: 1px dashed #ddd;margin: 40px 0;}
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+/* .wrapper {display: flex;width: 100%;align-items: stretch;} */
+#sidebar {min-width: 250px;max-width: 250px;background: #081342;color: #fff;transition: all 0.3s;}
+#sidebar.active {margin-left: -250px;}
+/* .sidebar .sidebar-header {padding: 20px;background: #6d7fcc;} */
+#sidebar ul.components {padding: 20px 0;border-bottom: 1px solid #47748b;}
+#sidebar ul p {color: #fff;padding: 10px;}
+#sidebar ul li a {padding: 10px;font-size: 1.1em;display: block;}
+#sidebar ul li a:hover {color: #7386D5;background: #fff;}
+#sidebar ul li.active>a,
+.sidebar a[aria-expanded="true"] {color: #fff;background: #6d7fcc;}
+.sidebar a[data-toggle="collapse"] {position: relative;}
+.sidebar .dropdown-toggle::after {display: block;position: absolute;top: 50%;right: 20px;transform: translateY(-50%);}
+.sidebar ul ul a {font-size: 0.9em !important;padding-left: 30px !important;background: #6d7fcc;}
+.sidebar ul.CTAs {padding: 20px;}
+.sidebar ul.CTAs a {text-align: center;font-size: 0.9em !important;display: block;border-radius: 5px;margin-bottom: 5px;}
+.sidebar a.download {background: #fff;color: #7386D5;}
+.sidebar a.article,
+.sidebar a.article:hover {background: #6d7fcc !important;color: #fff !important;}
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+/* #content {width: 100%;padding: 20px;min-height: 100vh;transition: all 0.3s;} */
+
+/* ===================================================
+----------------------------------------------------- */
+#wrapper {padding-left: 50px;transition: all 0.5s ease;}
+#wrapper.toggled {padding-left: 250px;}
+#sidebar-wrapper {z-index: 1000;position: fixed;left: -200px;width: 250px;height: 100%;overflow-y: auto;background: #282F4D;padding-top: 5px;transition: all 0.5s ease;}
+#page-content-wrapper {width: 100%;margin-top: 71px;/* padding: 15px; */}
+/* #wrapper.toggled #sidebar-wrapper {left: -250px;margin-left: 250px;} */
+/* #wrapper.toggled #page-content-wrapper {position: absolute;margin-right: -50px;} */
+/* #wrapper.toggled #sidebar-wrapper {left: -250px;margin-left: 250px;} */
+/* #wrapper.toggled #page-content-wrapper {position: absolute;margin-right: -50px;} */
+/* Sidebar Styles */
+/* .sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+} */
+
+.sidebar ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+.sidebar ul li {
+  display: block;
+}
+.sidebar li.title {
+  letter-spacing: 0.01em;
+  font-size: 2rem;
+  line-height: 4.2rem;
+}
+.sidebar ul.sidebar__toggled li a {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: #4af71f;/* #999999 */
+}
+
+.sidebar ul li a [class*="icon"] {
+  margin-right: 15px;
+}
+.sidebar ul li a#main-toggle:after,
+.sidebar ul li a.dropdown-toggle:after {
+  right: 20px;
+  bottom: 5px;
+}
+.sidebar .sidebar__main {
+    border-bottom: 1px solid #373737;
+}
+.sidebar .sidebar__toggled {
+  font-size: 2rem;
+  line-height: 3.4rem;
+  border-bottom: 1px solid #444;
+  padding-bottom: 5px;
+}
+.sidebar ul li.title,
+.sidebar .sidebar__main--brand a {
+    color: #999999;
+}
+
+.sidebar .dropdown-toggle {
+  padding-right: 20px;
+}
+.sidebar #main-toggle:after,
+.sidebar .dropdown-toggle:after {
+  font-family: 'Glyphicons Halflings';
+  font-size: .7em;
+  position: absolute;
+  margin-left: .25em;
+  bottom: 0;
+  /* content: "\e114"; */
+}
+#main-toggle:after {
+  font-size: 1em;
+  content: "\e055";
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 50px;
+    }
+
+    #sidebar-wrapper {
+      left: 250px;
+      margin-left: -250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+      left: -200px;
+      margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px 0;
+    }
+    
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 50px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
